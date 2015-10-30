@@ -19,3 +19,4 @@ class osx::energy::hibernatemode($mode = 7) {
     unless  => "pmset -g custom | grep 'AC Power' -A 17 | grep -E '^\shibernatemode\s+${mode}'",
   }
 }
+

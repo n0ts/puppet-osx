@@ -5,7 +5,7 @@ class osx::finder::default_location($location = '/tmp') {
     user   => $::boxen_user,
     domain => 'com.apple.finder',
     key    => 'NewWindowTarget',
-    value  => 'PfDe',
+    value  => 'PfHm',
     notify => Exec['killall Finder'];
   }
 
@@ -13,7 +13,7 @@ class osx::finder::default_location($location = '/tmp') {
     user   => $::boxen_user,
     domain => 'com.apple.finder',
     key    => 'NewWindowTargetPath',
-    value  => $location,
+    value  => "file://${location}/",
     notify => Exec['killall Finder'];
   }
 }

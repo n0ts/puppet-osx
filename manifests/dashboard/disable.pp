@@ -1,11 +1,11 @@
-# Public: Disables the dashboard
+# Public: Disable the dashboard
 class osx::dashboard::disable {
   include osx::dashboard
 
-  boxen::osx_defaults { 'Toggle Whether Dashboard is Enabled':
+  boxen::osx_defaults { 'Disable dashboard':
     user   => $::boxen_user,
-    key    => 'mcx-disabled',
     domain => 'com.apple.dashboard',
+    key    => 'mcx-disabled',
     value  => true,
     notify => Exec['killall Dashboard'],
   }

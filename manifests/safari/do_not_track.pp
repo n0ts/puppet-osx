@@ -7,3 +7,4 @@ class osx::safari::do_not_track {
     value  => true,
   }
 }
+
