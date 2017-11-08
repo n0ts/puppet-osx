@@ -39,7 +39,7 @@ GEM
     multipart-post (2.0.0)
     octokit (2.7.2)
       sawyer (~> 0.5.2)
-    plist (3.1.0)
+    plist (3.2.0)
     puppet (3.8.3)
       facter (> 1.6, < 3)
       hiera (~> 1.0)
@@ -79,7 +79,7 @@ PLATFORMS
 
 DEPENDENCIES
   cardboard (~> 2.1)
-  plist (= 3.1.0)
+  plist (= 3.2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.13.7
