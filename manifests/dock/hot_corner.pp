@@ -29,7 +29,7 @@ define osx::dock::hot_corner (
     fail("osx::dock::hot_corner[$position] must be one of the following: Top Left, Top Right, Bottom Left, Bottom Right")
   }
   if $action !~ /^(Mission Control|Application Windows|Desktop|Start Screen Saver|Disable Screen Saver|Dashboard|Put Display to Sleep|Launchpad|Notification Center)$/ {
-    fail("osx::dock::hot_corner[$action] must be one the following: Mission Control, Application Windows, Desktop, Start Screen Saver, Disable Screen Saver, Dashboard, Put Display to Sleep, Launchpad, Notification Center")
+    fail("osx::dock::hot_corner[${action}] must be one the following: Mission Control, Application Windows, Desktop, Start Screen Saver, Disable Screen Saver, Dashboard, Put Display to Sleep, Launchpad, Notification Center")
   }
 
   $position_value = $position ? {
