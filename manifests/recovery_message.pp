@@ -52,7 +52,7 @@ define osx::recovery_message(
         ]
       }
 
-      if versioncmp("${::macosx_productversion_major}", '10.12') <= 0 {
+      if versioncmp($::macosx_productversion_major, '10.12') <= 0 {
         exec { 'Set OS X Recovery Message NVRAM Variable':
           command => "nvram good-samaritan-message='${value}'",
           unless  => "nvram good-samaritan-message | cut -c24- | grep '^${value}$'",
@@ -74,7 +74,7 @@ define osx::recovery_message(
       ]
     }
 
-    if versioncmp("${::macosx_productversion_major}", '10.12') <= 0 {
+    if versioncmp($::macosx_productversion_major, '10.12') <= 0 {
       exec { 'Remove OS X Recovery Message NVRAM Variable':
         command => 'nvram -d good-samaritan-message',
         onlyif  => 'nvram -p | grep good-samaritan-message',
