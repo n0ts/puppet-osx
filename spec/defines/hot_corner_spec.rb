@@ -41,7 +41,7 @@ describe 'osx::dock::hot_corner', :type => :define do
                 :user   => facts[:boxen_user],
                 :notify => 'Exec[killall Dock]'
               })
-            end 
+            end
           end
 
           context "using position parameter" do
@@ -73,7 +73,7 @@ describe 'osx::dock::hot_corner', :type => :define do
                 :user   => facts[:boxen_user],
                 :notify => 'Exec[killall Dock]'
               })
-            end 
+            end
           end
 
         end

@@ -1,6 +1,9 @@
 # Public: Sets the Effect for Swiping Left/Right with Three Fingers
 class osx::touchpad::gestures::three_finger_horizontal_swipe($effect = 'switch apps') {
-  validate_re($effect, '^(switch pages|switch apps)$', "osx::touchpad::gestures::three_finger_horizontal_swipe([effect] must be switch pages or switch apps, is ${effect}")
+
+  if $effect !~ /^(switch pages|switch apps)$/ {
+    fail("osx::touchpad::gestures::three_finger_horizontal_swipe([effect] must be switch pages or switch apps, is ${effect}")
+  }
 
   $effect_int = $effect ? {
     'switch pages' => 1,

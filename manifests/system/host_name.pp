@@ -1,22 +1,22 @@
 # Public: Set HostName
-class osx::system::host_name($name = 'localHost') {
-  exec { "hostname ${name}":
-    unless => "hostname | grep ${name}",
+class osx::system::host_name($host_name = 'localHost') {
+  exec { "hostname ${host_name}":
+    unless => "hostname | grep ${host_name}",
     user   => root,
   }
 
-  exec { "scutil --set ComputerName ${name}":
-    unless => "scutil --get ComputerName | grep ${name}",
+  exec { "scutil --set ComputerName ${host_name}":
+    unless => "scutil --get ComputerName | grep ${host_name}",
     user   => root,
   }
 
-  exec { "scutil --set HostName ${name}":
-    unless => "scutil --get HostName | grep ${name}",
+  exec { "scutil --set HostName ${host_name}":
+    unless => "scutil --get HostName | grep ${host_name}",
     user   => root,
   }
 
-  exec { "scutil --set LocalHostName ${name}":
-    unless => "scutil --get LocalHostName | grep ${name}",
+  exec { "scutil --set LocalHostName ${host_name}":
+    unless => "scutil --get LocalHostName | grep ${host_name}",
     user   => root,
   }
 
@@ -24,13 +24,13 @@ class osx::system::host_name($name = 'localHost') {
     user   => root,
     domain => '/Library/Preferences/SystemConfiguration/com.apple.smb.server',
     key    => 'NetBIOSName',
-    value  => $name,
+    value  => $host_name,
   }
 
   boxen::osx_defaults { 'Update Computer NetBIOS Host Name - Part 2':
     user   => root,
     domain => '/Library/Preferences/SystemConfiguration/com.apple.smb.server',
     key    => 'ServerDecription',
-    value  => $name,
+    value  => $host_name,
   }
 }

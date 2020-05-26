@@ -1,5 +1,5 @@
 # Public: Disables the 3d dock in favor of a simpler, 2d style.
-class osx::dock::2d {
+class osx::dock::style_2d {
   include osx::dock
 
   boxen::osx_defaults { 'Use a flat, 2d style for the Dock':

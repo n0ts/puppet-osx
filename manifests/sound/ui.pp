@@ -3,7 +3,9 @@ class osx::sound::ui(
   $level  = undef,
   $ensure = 'present') {
 
-  validate_re($ensure, '^(present|absent)$', "osx::sound::ui([ensure] must be present or absent, is ${ensure}")
+  if $ensure !~ /^(present|absent)$/ {
+    fail("osx::sound::ui([ensure] must be present or absent, is ${ensure}")
+  }
 
   $enabled_int = $ensure ? {
     present => 1,

@@ -1,7 +1,9 @@
 # Public: Toggle Whether iPods and iPhones Sync Automatically When Connected
 class osx::itunes::automatic_sync($ensure = 'present') {
 
-  validate_re($ensure, '^(present|absent)$', "osx::itunes::automatic_sync([ensure] must be present or absent, is ${ensure}")
+  if $ensure !~ /^(present|absent)$/ {
+    fail("osx::itunes::automatic_sync([ensure] must be present or absent, is ${ensure}")
+  }
 
   $enabled = $ensure ? {
     present => true,

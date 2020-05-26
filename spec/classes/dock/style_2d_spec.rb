@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'osx::dock::2d' do
+describe 'osx::dock::style_2d' do
   let(:facts) { {:boxen_user => 'ilikebees'} }
 
   it do

@@ -2,7 +2,9 @@
 class osx::airport::require_password_for_computer_to_computer_networks($ensure = 'present') {
   include osx::airport
 
-  validate_re($ensure, '^(present|absent)$', "osx::airport::require_password_for_computer_to_computer_networks[ensure] must be present or absent, is ${ensure}")
+  if $ensure !~ /^(present|absent)$/ {
+    fail("osx::airport::require_password_for_computer_to_computer_networks[ensure] must be present or absent, is ${ensure}")
+  }
 
   $enabled = $ensure ? {
     present => 'YES',

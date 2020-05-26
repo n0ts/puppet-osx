@@ -2,7 +2,9 @@
 class osx::airport::disconnect_on_logout($ensure = 'present') {
   include osx::airport
 
-  validate_re($ensure, '^(present|absent)$', "osx::airport::disconnect_on_logout[ensure] must be present or absent, is ${ensure}")
+  if $ensure !~ /^(present|absent)$/ {
+    fail("osx::airport::disconnect_on_logout[ensure] must be present or absent, is ${ensure}")
+  }
 
   $enabled = $ensure ? {
     present => 'YES',
