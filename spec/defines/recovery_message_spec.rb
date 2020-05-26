@@ -32,12 +32,6 @@ describe 'osx::recovery_message' do
         :value  => title,
         :user   => 'root'
       })
-
-      should contain_exec('Set OS X Recovery Message NVRAM Variable').with({
-        :command => "nvram good-samaritan-message='#{title}'",
-        :unless  => "nvram good-samaritan-message | cut -c24- | grep '^#{title}$'",
-        :user    => 'root'
-      })
     end
   end
 
@@ -52,22 +46,6 @@ describe 'osx::recovery_message' do
         :key    => 'LoginwindowText',
         :user   => 'root'
       })
-
-      should contain_exec('Remove OS X Recovery Message NVRAM Variable').with({
-        :command => 'nvram -d good-samaritan-message',
-        :onlyif  => 'nvram -p | grep good-samaritan-message',
-        :user    => 'root'
-      })
-    end
-  end
-
-  context 'Given a value with an apostrophe' do
-    let(:title) { "Jack's message with an apostrophe" }
-
-    it do
-      expect {
-        should contain_exec('Set OS X Recovery Message NVRAM Variable')
-      }
     end
   end
 end
