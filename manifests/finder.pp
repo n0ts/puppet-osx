@@ -5,7 +5,7 @@ class osx::finder {
   }
 
   exec { 'Remove All .DS_Store Files':
-    command     => 'find / -xdev -name .DS_Store -type f -not -path "/.MobileBackups/*" -not -path "/Volumes/*" -delete',
+    command     => 'find /Users -xdev -name .DS_Store -type f -not -path "/.MobileBackups/*" -not -path "/Volumes/*" -delete',
     user        => root,
     refreshonly => true,
   }
